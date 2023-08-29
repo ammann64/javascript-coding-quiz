@@ -1,6 +1,6 @@
 body {
     display: grid;
-    flex-direction: column;
+    background-color: #9999ff;
 }
 
 header {
@@ -11,7 +11,7 @@ header {
 }
 
 #high-scores {
-    color: palevioletred;
+    color: #800033;
     left: .5%; position: absolute;
 }
 
@@ -24,15 +24,18 @@ h1 {
 }
 main {
     width: 50vw;
+    height: 50vh;
+    margin-bottom: 15vh;
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-self: center;
+    justify-content: space-around;
     align-items: center;
 }
 
 button {
     color:white;
     background-color: #660066;
-    width: 20vw;
+    width: 10vw;
 }
