@@ -20,7 +20,21 @@
     <p id="intro">Try to answer these javascript related questions as fast as you can. Keep in mind any wrong answers will subtract from your time.
         After you are finished you will be prompted to enter your initials to save your high score.
     </p>
-    
+    <div id="saveScore" hidden="hidden">
+    <label for="initials">Enter your initials to save your high score (2 uppercase letters): </label>
+    <input type="text" id="initials" name="initials" minlength="2" maxlength="2">
+    <button id="submit">Submit</button>
+    </div>
+
+    <div id="display-scores" hidden="hidden">
+    <h2>High Scores: </h2>
+    <ol id="scores">
+
+    </ol>
+    <button id="go-back">Go back</button>
+    <button id="clear-scores">Clear scores</button>
+    </div>
+
     <button id="start">Start Quiz</button>
     <button id="response1" hidden="hidden" class="responses"></button>
     <button id="response2" hidden="hidden" class="responses"></button>

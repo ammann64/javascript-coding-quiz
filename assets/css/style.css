@@ -22,9 +22,14 @@ header {
 h1 {
     font-size: 175%;
 }
-
+h2 {
+    font-size: 150%;
+}
 P {
     font-size: 110%;
+}
+ol {
+    background-color: lightslategray;
 }
 
 main {
