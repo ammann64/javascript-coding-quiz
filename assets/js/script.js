@@ -39,6 +39,7 @@ var questions = [
 ];
 
 function setTime() {        //Counts down the time remaining until the quiz is over
+        timeLeft = 65;
         timerInterval = setInterval(function() {
         timeLeft--
         timeEl.textContent = "Time: " + timeLeft;
@@ -98,25 +99,34 @@ submitEl.addEventListener("click", function() { //When the submit button is clic
     initialsInput = initialsEl.value.trim();
     saveScore();
     resetQuiz();
+    if (document.getElementById("isItCorrect")) {
+        var correctEl = document.querySelector("#isItCorrect");
+        correctEl.setAttribute("hidden", "hidden");
+    }
 })
 highScoresEl.addEventListener("click", function() { //Displays all saved high scores by parsing the objects from storage. Gets the key from the saved scores storage array. Only displays the element if it isn't already displaying on matching to prevent duplicates
-    if (finishQuiz && (saveScoreEl.hasAttribute("hidden"))) {
+    if (finishQuiz && (saveScoreEl.hasAttribute("hidden") && (savedScores != null))) {
         for (var s = 0; s < savedScores.length; s++) {
             var currentScoreKey = savedScores[s];
             var thisScore = JSON.parse(localStorage.getItem(currentScoreKey));
             console.log(thisScore);
             var scoreLi = document.createElement("li");
             scoreLi.textContent = "User: " + thisScore.initials + " - Score: " + thisScore.userScore;
-            scoreLi.setAttribute("id", "score" + s);
-            if (!(document.getElementById("score" + s)))
+            scoreLi.setAttribute("id", thisScore.initials + "Score");
+            if (!(document.getElementById(thisScore.initials + "Score")))
             {
                 scoresEl.appendChild(scoreLi);
             }
         }
+
         questionEl.setAttribute("hidden", "hidden");
         introEl.setAttribute("hidden", "hidden");
         startEl.setAttribute("hidden", "hidden");
         displayScoresEl.removeAttribute("hidden");
+        if (document.getElementById("isItCorrect")) {
+            var correctEl = document.querySelector("#isItCorrect");
+            correctEl.setAttribute("hidden", "hidden");
+        }
     }
 })
 backEl.addEventListener("click", function(){ //Goes back to the quiz starting screen
@@ -124,6 +134,9 @@ backEl.addEventListener("click", function(){ //Goes back to the quiz starting sc
 })
 clearScoreEl.addEventListener("click", function(){ //Clears the storage
     localStorage.clear();
+    while (scoresEl.lastChild) {
+        scoresEl.lastChild.remove();
+    }
 })
 
 function quizProcess() { //Any time a response is clicked this function will continue the quiz unless quiz over has been called or the quiz has reached the end of the questions
@@ -145,6 +158,7 @@ function resetQuiz() { //This will reset the quiz back to the starting screen
     saveScoreEl.setAttribute("hidden", "hidden");
     displayScoresEl.setAttribute("hidden", "hidden");
     currentQuestion = 0;
+    
 }
 function quizOver() { //This function will be called whenever the quiz finishes.
     finishQuiz = true; //Saves the state of the quiz being done to be checked elsewhere
