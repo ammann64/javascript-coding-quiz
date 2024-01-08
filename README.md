@@ -11,6 +11,6 @@ Austin Mann
 https://ammann64.github.io/module-4-challenge/
 https://github.com/ammann64/module-4-challenge
 ## Images:
-![Starting quiz screen](assets\images\coding-quiz-start.png)
-![Quiz question screen](assets\images\coding-quiz-question.png)
-![Quiz score screen](assets\images\coding-quiz-high-scores.png)
+![Starting quiz screen](/assets/images/coding-quiz-start.png)
+![Quiz question screen](/assets/images/coding-quiz-question.png)
+![Quiz score screen](/assets/images/coding-quiz-high-scores.png)
